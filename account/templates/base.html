@@ -40,8 +40,8 @@
 
               <span class="my-2 my-lg-0 text-white">
                 {% if request.user.is_authenticated %}
-                Hello {{ request.user.first_name }}
-                <button type="button" class="btn btn-outline-danger ml-2">
+                Hello {{ request.user.username }}
+                <button type="button" class="btn btn-danger ml-2">
                   <a href="{% url 'logout' %}" class="text-white text-decoration-none">Logout</a>
                 </button>
                 {% endif %}
