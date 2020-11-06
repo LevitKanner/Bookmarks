@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %} Edit Profile {% endblock %}
+{% block content %}
+{% if changed %}
+<div class="container">
+    <h1>Changes Saved</h1>
+    <hr>
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">Close</span>
+        </button>
+        Profile changes saved.
+    </div>
+    <p><a href="{% url 'dashboard' %}" class="btn btn-primary"> Back </a></p>
+</div>
+{% else %}
+<div class="container">
+    <h1> Edit Profile</h1>
+    <hr>
+    <form method="post" enctype="multipart/form-data">
+        {{ user_form|crispy }}
+        {{ profile_form|crispy }}
+        {% csrf_token %}
+        <p><input type="submit" value="Save changes" class="btn btn-primary"></p>
+    </form>
+</div>
+{% endif %}
+{% endblock %}
