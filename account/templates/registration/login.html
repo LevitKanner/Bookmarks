@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %} LOGIN {% endblock %}
+
+{% block content %}
+
+<div class="container" style="width: 60%;">
+    <h1>LOGIN</h1>
+    {% if form.errors %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">Close</span>
+        </button>
+        Incorrect username or password
+    </div>
+    {% endif %}
+    
+    <hr>
+
+    <form action="{% url 'login' %}" method="post">
+        {{ form|crispy }}
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}">
+        <p><input type="submit" value="LOGIN" class="btn btn-primary"></p>
+    </form>
+    <p> <a href="{% url 'password_reset' %}"> Forgotten password?</a></p>
+    <p>Don't have an account? <a href="{% url 'register' %}">sign up</a></p>
+</div>
+
+{% endblock %}
