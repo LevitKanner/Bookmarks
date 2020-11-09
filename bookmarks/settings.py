@@ -34,6 +34,9 @@ LOGIN_REDIRECT_URL = 'dashboard'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 
+
+
+
 INSTALLED_APPS = [
     'account.apps.AccountConfig',
     'django.contrib.admin',
@@ -42,8 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crispy_forms'
-    
+    'crispy_forms'  
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -133,3 +135,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = BASE_DIR / Path('media/')
+
+
+AUTHENTICATION_BACKENDS = [ 
+                           'django.contrib.auth.backends.ModelBackend', 
+                           'account.authentication.EmailAuthBackend',
+                           ]
