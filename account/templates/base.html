@@ -41,15 +41,35 @@
               <span class="my-2 my-lg-0 text-white">
                 {% if request.user.is_authenticated %}
                 Hello {{ request.user.username }}
-                <button type="button" class="btn btn-danger ml-2">
-                  <a href="{% url 'logout' %}" class="text-white text-decoration-none">Logout</a>
-                </button>
+              </span>
+                <div class="dropdown mx-4">
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                     Settings
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'logout' %}">logout</a>
+                    <a class="dropdown-item" href="{% url 'password_reset' %}">Reset password</a>
+                    <a class="dropdown-item" href="{% url 'edit' %}">edit profile</a>
+                  </div>
+                </div>
                 {% endif %}
-                </span>
+                
           </div>
       </nav>
 
+      {% if messages %}
 
+        {% for message in messages %}
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">Close</span>
+          </button>
+          {{ message|safe }}
+        </div>
+        {% endfor %}
+
+      {% endif %}
 
       <div class="container content">
           {% block content %}
