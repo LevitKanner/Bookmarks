@@ -25,7 +25,11 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'bookmarks.com', 
+    '127.0.0.1',
+    'localhost'
+]
 
 
 # Application definition
@@ -45,7 +49,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crispy_forms'  
+    'crispy_forms',
+    'social_django', 
+    'django_extensions',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -140,4 +146,11 @@ MEDIA_ROOT = BASE_DIR / Path('media/')
 AUTHENTICATION_BACKENDS = [ 
                            'django.contrib.auth.backends.ModelBackend', 
                            'account.authentication.EmailAuthBackend',
+                           'social_core.backends.facebook.FacebookOAuth2',
                            ]
+
+
+SOCIAL_AUTH_FACEBOOK_KEY = config('SOCIAL_AUTH_FACEBOOK_KEY') # Facebook App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = config('SOCIAL_AUTH_FACEBOOK_SECRET')  # Facebook App Secret
+
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
