@@ -24,6 +24,14 @@
         <input type="hidden" name="next" value="{{ next }}">
         <p><input type="submit" value="LOGIN" class="btn btn-primary"></p>
     </form>
+    <!-- facebook button -->
+    <p>
+        <a name="" id="" class="btn btn-primary" href="{% url 'social:begin' 'facebook' %}" role="button">
+            <i class="fa fa-facebook-square" aria-hidden="true"></i> 
+            Sign in with facebook
+        </a>
+    </p>
+
     <p> <a href="{% url 'password_reset' %}"> Forgotten password?</a></p>
     <p>Don't have an account? <a href="{% url 'register' %}">sign up</a></p>
 </div>
