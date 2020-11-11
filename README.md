@@ -11,4 +11,5 @@ A social media application that allows users to share images they find on the in
 
 
 ## Screenshots 
-![](login.png)
+![](screenshots/login.png)
+![](screenshots/bookmark_image.png)

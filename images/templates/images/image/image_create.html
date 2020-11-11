@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} Bookmark an Image {% endblock %}
+
+{% block content %}
+<h1>Bookmark an Image</h1>
+<hr>
+
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-primary alert-dismissible fade show" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+    </button>
+    {{ message|safe }}
+</div>
+{% endfor %}
+
+{% else %}
+<div class="row">
+
+    <div class="col-sm-6">
+        <img src="{{ request.GET.url }}" alt="image" class="rounded-circle img-fluid shadow p-3 mb-5 bg-white rounded"  >
+    </div>
+
+    <div class="col-sm-6">
+        <form method="post" class="shadow p-3 mb-5 bg-white rounded">
+            {{ form|crispy }}
+            {% csrf_token %}
+            <input type="submit" value="Bookmark" class="btn btn-primary">
+        </form>
+    </div>
+
+</div>
+{% endif %}
+
+{% endblock %}
