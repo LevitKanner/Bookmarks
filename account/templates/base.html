@@ -6,16 +6,18 @@
         {% endblock %}
     </title>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
+    <meta charset="utf-8" name="bookmarks" content="bookmarks">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Asap:400,700" rel="stylesheet" type="text/css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
-  <body>
+  <body style="font-family: 'Asap', 'Montserrat',;">
 
       <nav class="navbar navbar-expand-md navbar-dark bg-primary sticky-top mb-4">
-          <a class="navbar-brand" href="{% url 'dashboard' %}">Bookmarks</a>
+          <a class="navbar-brand" href="{% url 'dashboard' %}" style="font-family: 'Asap';">Bookmarks</a>
           <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
               aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
