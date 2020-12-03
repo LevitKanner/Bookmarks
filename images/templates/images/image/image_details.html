@@ -1,0 +1,27 @@
+{%  extends 'base.html' %}
+{% block title %} {{ image.title }} {% endblock %}
+
+{% block content %}
+    <h1>{{ image.title }}</h1>
+    <img src="{{ image.image.url }}" class="rounded-circle img-fluid shadow p-2 mb-2 bg-white rounded">
+    {% with total_likes=image.liked_by.count %}
+        <div>
+        <div>
+            <span>
+                {{ total_likes }} like{{ total_likes|pluralize }}
+            </span>
+        </div>
+        {{ image.description|linebreaks }}
+        </div>
+        <div>
+        {% for user in image.liked_by.all %}
+            <div>
+            <img src="{{ user.profile.photo.url }}">
+            <p>{{ user.first_name }}</p>
+            </div>
+            {% empty %}
+           Nobody likes this image yet.
+        {% endfor %}
+        </div>
+    {% endwith %}
+{% endblock %}
