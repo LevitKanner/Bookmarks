@@ -3,18 +3,31 @@
 
 {% block content %}
     <h1>{{ image.title }}</h1>
-    <img src="{{ image.image.url }}" class="rounded-circle img-fluid shadow p-2 mb-2 bg-white rounded">
-    {% with total_likes=image.liked_by.count %}
+
+    {% load thumbnail %}
+    <a href="{{ image.image.url }}">
+        <img src="{% thumbnail image.image 300x0 quality=100 %}" class="rounded-circle img-fluid shadow p-2 mb-2 bg-white rounded">
+    </a>
+
+    {% with total_likes=image.liked_by.count users_like=image.liked_by.all %}
         <div>
         <div>
             <span>
                 {{ total_likes }} like{{ total_likes|pluralize }}
             </span>
+            <a href="#" data-id="{{ image.id }}" data-action="{% if request.user in users_like %} un {% endif %}like"
+            class="btn btn-primary">
+            {% if request.user not in users_like %}
+                Like
+            {% else %}
+                Unlike
+            {%  endif %}
+            </a>
         </div>
         {{ image.description|linebreaks }}
         </div>
         <div>
-        {% for user in image.liked_by.all %}
+        {% for user in users_like %}
             <div>
             <img src="{{ user.profile.photo.url }}">
             <p>{{ user.first_name }}</p>
