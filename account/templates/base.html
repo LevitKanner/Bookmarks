@@ -50,7 +50,7 @@
                   </li>
 
                   <li {% if section == 'images' %} class="nav-item active" {% else %} class="nav-item"  {% endif %}>
-                      <a class="nav-link" href="#">Images</a>
+                      <a class="nav-link" href="{% url 'images:list' %}">Images</a>
                   </li>
 
                   <li {% if section == 'people' %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
